@@ -16,7 +16,8 @@ namespace HangMan
             GuessedLetter guessedLetters = new GuessedLetter();
                       
             char[] secretWordArray = Convert.ToCharArray(secretWord);
-            while (secretWord.GuessCount != 14)
+            bool isTrue = true;
+            while (isTrue)
             {
                 char playerGuess = InputTest.PlayerGuess();//Här gissar spelaren
              
@@ -42,11 +43,13 @@ namespace HangMan
                 
                 if (guessCounter == 14)
                 {
-                    Dialog.GameOver(secretWord);                   
+                    Dialog.GameOver(secretWord);  
+                    isTrue = false;
                 }
                 if (!secretWordArray.Contains('*'))
                 {
-                    Dialog.GameWon(secretWord);                   
+                    Dialog.GameWon(secretWord);   
+                    isTrue = false;
                 }
             }
         }
